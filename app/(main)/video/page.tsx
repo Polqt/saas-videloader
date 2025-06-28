@@ -56,16 +56,6 @@ export default function Video() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-base-200 to-base-300">
-      <div className="navbar bg-base-100 shadow-lg sticky top-0 z-50">
-        <div className="container mx-auto">
-          <div className="flex-1">
-            <h2 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              Video Upload Studio
-            </h2>
-          </div>
-        </div>
-      </div>
-
       <div className="container mx-auto px-4 py-8">
         <div className="grid lg:grid-cols-12 gap-8">
           <div className="lg:col-span-5 space-y-6">
