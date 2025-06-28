@@ -81,7 +81,8 @@ export async function POST(request: NextRequest) {
           {
             resource_type: 'video',
             folder: 'video-uploads',
-            transformation: [{ quality: 'auto', fetch_format: 'mp4' }],
+            eager: [{ quality: 'auto', fetch_format: 'mp4' }],
+            eager_async: true,
           },
           (error, result) => {
             if (error) {

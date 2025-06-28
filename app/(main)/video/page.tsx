@@ -31,10 +31,7 @@ export default function Video() {
     formData.append('originalSize', file.size.toString());
 
     try {
-      const response = await axios.post('/api/video-upload', {
-        method: 'POST',
-        body: formData,
-      });
+      const response = await axios.post('/api/video-upload', formData);
 
       if (response.status === 200) {
         console.log('File uploaded successfully');
@@ -78,7 +75,7 @@ export default function Video() {
                   Upload Video
                 </h2>
 
-                <div onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="form-control">
                     <label className="label">
                       <span className="label-text font-medium">
@@ -146,7 +143,7 @@ export default function Video() {
                   </div>
 
                   <button
-                    type="button"
+                    type="submit"
                     onClick={handleSubmit}
                     className="btn btn-primary btn-block"
                     disabled={isUploading || !file}
@@ -160,7 +157,7 @@ export default function Video() {
                       <>Upload Video</>
                     )}
                   </button>
-                </div>
+                </form>
 
                 <div className="alert alert-info mt-4">
                   <span className="text-sm">
