@@ -7,6 +7,7 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { filesize } from 'filesize';
 import { Video } from '@/app/generated/prisma';
+import { AlertCircle, Download, Play } from 'lucide-react';
 
 dayjs.extend(relativeTime);
 
@@ -45,7 +46,8 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, onDownload }) => {
       src: publicId,
       width: 400,
       height: 225,
-      rawTransformations: ['e_preview:duration_15:max_seg_9:min_duration_1'],
+      assetType: 'video',
+      rawTransformations: ['so_0', 'du_20', 'fl_progressive'],
     });
   }, []);
 
@@ -82,6 +84,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, onDownload }) => {
           previewError ? (
             <div className="w-full h-full flex items-center justify-center bg-base-200">
               <div className="text-center space-y-2">
+                <AlertCircle className="mx-auto w-6 h-6 text-error" />
                 <p className="text-error font-medium">Preview not available</p>
               </div>
             </div>
@@ -92,6 +95,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, onDownload }) => {
               loop
               muted
               className="w-full h-full object-cover transition-all duration-300"
+              crossOrigin="anonymous"
               onError={handlePreviewError}
             />
           )
@@ -100,6 +104,8 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, onDownload }) => {
             src={getThumbnailUrl(video.publicId)}
             alt={video.title}
             className="w-full h-full object-cover transition-all duration-300"
+            width={400}
+            height={225}
           />
         )}
         <div className="absolute bottom-3 right-3 bg-base-100/90 backdrop-blur-sm px-2 py-1 rounded-lg text-sm flex items-center gap-1 shadow-lg">
@@ -107,7 +113,9 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, onDownload }) => {
         </div>
         {!isHovered && (
           <div className="absolute inset-0 flex items-center justify-center bg-base-100/20 backdrop-blur-[1px] opacity-0 hover:opacity-100 transition-opacity duration-300">
-            <div className="w-16 h-16 bg-primary/80 rounded-full flex items-center justify-center"></div>
+            <div className="w-16 h-16 bg-primary/80 rounded-full flex items-center justify-center">
+              <Play className="text-white w-6 h-6" />
+            </div>
           </div>
         )}
       </figure>
@@ -159,7 +167,6 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, onDownload }) => {
             <div className="badge badge-success badge-sm font-semibold">
               {compressionPercentage}% saved
             </div>
-            <span className="text-xs text-base-content/60">compression</span>
           </div>
 
           <button
@@ -168,7 +175,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, onDownload }) => {
               onDownload(getFullVideoUrl(video.publicId), video.title)
             }
           >
-            Download
+            <Download className="w-4 h-4" />
           </button>
         </div>
       </div>
