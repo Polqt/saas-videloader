@@ -51,7 +51,57 @@ export default function Home() {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-base-200 to-base-300 px-4 py-8 space-y-12 animate-pulse">
+        <div className="text-center space-y-4 mb-12">
+          <div className="h-10 w-64 bg-base-300 mx-auto rounded" />
+          <div className="h-4 w-96 bg-base-300 mx-auto rounded" />
+        </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          {Array.from({ length: 3 }).map((_, i) => (
+            <div key={i} className="card bg-base-100 shadow">
+              <div className="card-body space-y-4">
+                <div className="w-12 h-12 bg-base-300 rounded-lg" />
+                <div className="h-4 w-3/4 bg-base-300 rounded" />
+                <div className="h-3 w-full bg-base-300 rounded" />
+                <div className="h-3 w-5/6 bg-base-300 rounded" />
+                <div className="card-actions justify-end">
+                  <div className="h-8 w-24 bg-base-300 rounded" />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="space-y-4 mb-12">
+          <div className="flex justify-between items-center">
+            <div className="h-6 w-48 bg-base-300 rounded" />
+            <div className="h-8 w-20 bg-base-300 rounded" />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {Array.from({ length: 3 }).map((_, i) => (
+              <div key={i} className="card bg-base-100 shadow">
+                <div className="aspect-video bg-base-300 rounded-t" />
+                <div className="p-4 space-y-2">
+                  <div className="h-4 w-2/3 bg-base-300 rounded" />
+                  <div className="h-3 w-full bg-base-300 rounded" />
+                  <div className="h-3 w-5/6 bg-base-300 rounded" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="stats stats-vertical lg:stats-horizontal bg-base-100 shadow w-full">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="stat space-y-2">
+              <div className="w-10 h-10 bg-base-300 rounded-full" />
+              <div className="h-3 w-1/2 bg-base-300 rounded" />
+              <div className="h-6 w-1/3 bg-base-300 rounded" />
+              <div className="h-2 w-2/3 bg-base-300 rounded" />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
   }
 
   if (error) {
