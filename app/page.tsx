@@ -1,103 +1,98 @@
-import Image from "next/image";
+import React from 'react';
+import Link from 'next/link';
+import { Play, ArrowRight, Sparkles } from 'lucide-react';
 
-export default function Home() {
+export default function LandingPage() {
+  const stats = [
+    { number: '50M+', label: 'Files Processed' },
+    { number: '100K+', label: 'Happy Users' },
+    { number: '99.9%', label: 'Uptime' },
+    { number: '< 10s', label: 'Avg Process Time' },
+  ];
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen bg-base-100 flex flex-col">
+      <div className="navbar bg-base-100/95 backdrop-blur-sm sticky top-0 z-50 border-b border-base-300/20 h-16 min-h-16">
+        <div className="navbar-start">
+          <Link href="/" className="btn btn-ghost text-lg sm:text-xl font-bold">
+            <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-primary mr-1 sm:mr-2" />
+            <span className="hidden xs:inline">VideoPloader</span>
+            <span className="xs:hidden">VP</span>
+          </Link>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        <div className="navbar-end space-x-1 sm:space-x-2">
+          <Link
+            href="/sign-in"
+            className="btn btn-ghost btn-sm text-xs sm:text-sm"
+          >
+            Sign In
+          </Link>
+          <Link
+            href="/sign-up"
+            className="btn btn-primary btn-sm text-xs sm:text-sm"
+          >
+            Get Started
+          </Link>
+        </div>
+      </div>
+
+      <section className="flex-1 bg-gradient-to-br from-base-100 via-base-200/30 to-base-100 relative overflow-hidden flex items-center justify-center">
+        <div className="w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+          <div className="max-w-6xl mx-auto text-center">
+            <div className="inline-flex items-center badge badge-primary badge-outline mb-4 sm:mb-6 lg:mb-8 p-2 sm:p-3 text-xs sm:text-sm">
+              <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+              New: AI-powered video enhancement
+            </div>
+
+            <h1 className="font-black mb-4 sm:mb-6 leading-tight">
+              <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+                Transform Your{' '}
+              </span>
+              <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+                Media
+              </span>
+              <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mt-1 sm:mt-2">
+                In Seconds
+              </span>
+            </h1>
+
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-base-content/70 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed px-2">
+              Professional-grade image resizing, video processing, and AI
+              enhancement. Built for creators who demand quality and speed.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-6 sm:mb-8 lg:mb-12 px-4">
+              <Link
+                href="/sign-up"
+                className="btn btn-primary btn-md sm:btn-lg group shadow-lg"
+              >
+                <span className="text-sm sm:text-base">Start Free Trial</span>
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <button className="btn btn-outline btn-md sm:btn-lg group">
+                <Play className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                <span className="text-sm sm:text-base">Watch Demo</span>
+              </button>
+            </div>
+
+            <div className="w-full max-w-4xl mx-auto">
+              <div className="stats stats-vertical sm:stats-horizontal shadow-lg bg-base-100/80 backdrop-blur w-full">
+                {stats.map((stat, index) => (
+                  <div key={index} className="stat py-4 sm:py-6">
+                    <div className="stat-value text-lg sm:text-xl md:text-2xl lg:text-3xl text-primary font-bold">
+                      {stat.number}
+                    </div>
+                    <div className="stat-desc text-xs sm:text-sm md:text-base text-base-content/70 font-medium">
+                      {stat.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
